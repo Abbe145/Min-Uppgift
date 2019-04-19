@@ -1,0 +1,48 @@
+﻿@model WebApplication6.ViewModels.Skor.SkorIndexViewModel
+
+@{
+    ViewBag.Title = "Search";
+}
+
+
+@if (Request.IsAuthenticated)
+{
+    <p>
+        @Html.ActionLink("Add New", "Create", "Skor")
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.ActionLink("Namn", "Search", new { search = Model.Search, sort = Model.SortOrder })</th>
+            <th>Color</th>
+            <th>Model</th>
+            <th>Size</th>
+            <th>Price</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.SkorList)
+        {
+            <tr>
+                <td>@Html.ActionLink(item.Name, "ViewSkor", "Skor", new { id = item.ID }, null)</td>
+                <td>@item.Color</td>
+                <td>@item.Model</td>
+                <td>@item.Size</td>
+                <td>@item.Price</td>
+                <td>@item.Description</td>
+
+                @if (Request.IsAuthenticated)
+                {
+                    <td>
+                        @Html.ActionLink(" ", "Edit", new { id = item.ID }, new { @class = "glyphicon glyphicon-pencil" }) |
+                        @Html.ActionLink(" ", "Delete", new { id = item.ID }, new { onclick = "return confirm('Are sure you want to delete this category?');", @class = "glyphicon glyphicon-trash" })
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

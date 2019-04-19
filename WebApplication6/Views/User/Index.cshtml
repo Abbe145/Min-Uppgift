@@ -1,0 +1,30 @@
+﻿@model WebApplication6.ViewModels.User.UserIndexViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Users</h2>
+
+<table class="table">
+    <tr>
+        <th>Email</th>
+        <th>Username</th>
+        <th>Role</th>
+    </tr>
+    @foreach (var item in Model.Users)
+    {
+        <tr>
+            <td>@item.Email</td>
+            <td>@item.UserName</td>
+            <td>@item.UserRoles</td>
+            @if (Request.IsAuthenticated)
+            {
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.UserId }, new { @class = "glyphicon glyphicon-pencil" }) |
+                    @Html.ActionLink(" ", "Delete", new { id = item.UserId }, new { @class = "glyphicon glyphicon-trash", onclick = "return confirm('Are sure you want to delete this user?');" })
+                </td>
+            }
+        </tr>
+    }
+</table>

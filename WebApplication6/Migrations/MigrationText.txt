@@ -1,0 +1,7 @@
+﻿
+
+Enable-Migrations -ContextTypeName SkorModel -MigrationsDirectory Migrations\Skor
+
+add-migration -ConfigurationTypeName WebApplication6.Migrations.Skor.Configuration "InitCreate"
+
+update-database -ConfigurationTypeName WebApplication6.Migrations.Skor.Configuration

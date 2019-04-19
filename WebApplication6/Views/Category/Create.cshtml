@@ -1,0 +1,31 @@
+﻿@model WebApplication6.ViewModels.Category.CategoryViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+@using (Html.BeginForm(FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <table class="table">
+        <tr>
+            <td>Name</td>
+            <td>
+                @Html.HiddenFor(model => model.CategoryId)
+                @Html.TextBoxFor(model => model.CategoryName)
+                @Html.ValidationMessageFor(model => model.CategoryName)
+            </td>
+        </tr>
+    </table>
+
+    <input type="submit" value="Spara" />
+
+    <br />
+    <br />
+    @Html.ActionLink("Tillbaka till kategori", "Index")
+}
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

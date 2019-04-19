@@ -1,0 +1,41 @@
+﻿@model WebApplication6.ViewModels.Skor.SkoViewModel
+@{
+    ViewBag.Title = "ViewSkor";
+}
+
+<h2 style="font-family: Verdana; color: blueviolet">@Model.Name</h2>
+
+<div>
+    <table class="table">
+        <tr>
+            <td>Skor Name</td>
+            <td>@Model.Name</td>
+        </tr>
+        <tr>
+            <td>Color</td>
+            <td>@Model.Color</td>
+        </tr>
+        <tr>
+            <td>Model</td>
+            <td>@Model.Model</td>
+        </tr>
+        <tr>
+            <td>Size</td>
+            <td>@Model.Size</td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td>@Model.Price</td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>@Model.Description</td>
+        </tr>
+    </table>
+</div>
+
+<div>
+    <p>
+        @Html.ActionLink($"Tillbacka till {@Model.CategoryName}", "Index", "Skor", new { id = Model.CategoryId }, null)
+    </p>
+</div>

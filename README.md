@@ -1,2 +1,2 @@
-# Min-Uppgift
-Inlämingsuppgift
+# Inl-mning
+Inlämningsuppgift

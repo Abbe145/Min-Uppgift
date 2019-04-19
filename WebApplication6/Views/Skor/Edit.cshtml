@@ -1,0 +1,75 @@
+﻿@model WebApplication6.ViewModels.Skor.SkoViewModel
+@{
+    ViewBag.Title = "Edit";
+}
+<h2>Ändra</h2>
+
+@using (Html.BeginForm("Edit", "Skor", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <table class="table">
+        <tr>
+            <td>Namn</td>
+            <td>
+                @Html.HiddenFor(model => model.SkorId)
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Name)
+            </td>
+        </tr>
+        <tr>
+            <td>Färg</td>
+            <td>
+                @Html.TextBoxFor(model => model.Color, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Color)
+            </td>
+        </tr>
+        <tr>
+            <td>Model</td>
+            <td>
+                @Html.TextBoxFor(model => model.Model, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Model)
+            </td>
+        </tr>
+        <tr>
+            <td>Storlek</td>
+            <td>
+                @Html.TextBoxFor(model => model.Size, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Size)
+            </td>
+        </tr>
+        <tr>
+            <td>Pris</td>
+            <td>
+                @Html.TextBoxFor(model => model.Price, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Price)
+            </td>
+        </tr>
+        <tr>
+            <td>Beskrivning</td>
+            <td>
+                @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Description)
+            </td>
+        </tr>
+
+        <tr>
+            <td>Kategori</td>
+            <td>
+                @Html.DropDownListFor(model => Model.CategoryId, Model.CategoryDropDownList, new { @class = "form-control" })
+            </td>
+        </tr>
+    </table>
+
+    <input type="submit" value="Save" />
+
+    <br />
+    <br />
+
+    <div>
+        @Html.ActionLink($"Tillbaka till { Model.CategoryName }", "Index", new { id = Model.CategoryId })
+    </div>
+}
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

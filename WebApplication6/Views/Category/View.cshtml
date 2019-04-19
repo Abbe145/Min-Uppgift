@@ -1,0 +1,20 @@
+﻿@model WebApplication6.ViewModels.Category.CategoryViewModel
+
+
+<table class="table">
+    <tr>
+        <th><h2 style="font-family: cursive; color: orange">@Model.CategoryName</h2></th>
+        <th></th>
+    </tr>
+    <tr>
+
+        <td>@Html.ActionLink("Category", "Index", new { }, null)</td>
+        <td>@Model.CategoryName</td>
+    </tr>
+    <tr>
+        <td>Description</td>
+        
+    </tr>
+
+</table>
+<p class="text-right" style="color: royalblue; font-weight: 600">All in @Html.ActionLink(Model.CategoryName, "View", "Product", new { id = Model.CategoryId }, null) </p>
